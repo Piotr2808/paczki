@@ -18,10 +18,48 @@
 # Program powinien kończyć się z błędem, gdy element dodawany ma więcej niż 10kg,
 # lub mniej niż 1 kg i nie był dokładnie równy 0.
 
-# Max weight pack = 20kg
-# Weight of elements = 1kg - 10kg
-# Max weight pack with elements may be greater than 20kg
-# New element must be add to new pack
-# All elements must be shipped
-# 0 = break
-#
+import random
+
+# Zmienne:
+
+no_elements = int(input("Liczba elementów do wysłania: "))
+
+counter = 1
+total_weight = 0
+
+max_weight_element_weight = 0
+max_weight_element_num = 0
+
+packages = 0
+container = 0
+
+
+while counter <= no_elements:
+    element_weight = random.randint(1, 10)
+    total_weight += element_weight
+    container += element_weight
+    print(f"Waga elementu: {element_weight}")
+    if element_weight > 10:
+        total_weight -= element_weight
+        container -= element_weight
+        element_weight = 0
+        print("BŁĄD PROGRAMU: Wprowadź ponownie wagę!")
+        continue
+    if element_weight == 0:
+        break
+    if container >= 20:
+        packages += 1
+        container = 0
+    if container < 20 and counter == no_elements:
+        packages += 1
+    if element_weight > max_weight_element_weight:
+        max_weight_element_weight = element_weight
+        max_weight_element_num = counter
+    if not element_weight:
+        break
+    counter += 1
+print(f"\nWysłano: {packages} paczek")
+print(f"Liczba kilogramów wysłanych: {total_weight} kg")
+print(f"Liczba pustych kg: {packages * 20 - total_weight}")
+print(f"Element: {max_weight_element_num} miał najwięcej kg: {max_weight_element_weight}")
+# print(f"Puste miejsce: {} w pacze {}")
