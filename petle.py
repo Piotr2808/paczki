@@ -33,12 +33,17 @@ max_weight_element_num = 0
 packages = 0
 container = 0
 
+free_place = 0
+
+x = 0
 
 while counter <= no_elements:
     element_weight = random.randint(1, 10)
     total_weight += element_weight
     container += element_weight
-    print(f"Waga elementu: {element_weight}")
+    for i in range(1, ):
+        x += 1
+    print(f"Waga elementu: {x}: {element_weight}")
     if element_weight > 10:
         total_weight -= element_weight
         container -= element_weight
@@ -62,4 +67,4 @@ print(f"\nWysłano: {packages} paczek")
 print(f"Liczba kilogramów wysłanych: {total_weight} kg")
 print(f"Liczba pustych kg: {packages * 20 - total_weight}")
 print(f"Element: {max_weight_element_num} miał najwięcej kg: {max_weight_element_weight}")
-# print(f"Puste miejsce: {} w pacze {}")
+# print(f"Puste miejsce: {free_place} w pacze {free_place}")
