@@ -43,26 +43,34 @@ while counter <= no_elements:
     container += element_weight
     for i in range(1, ):
         x += 1
-    print(f"Waga elementu: {x}: {element_weight}")
+    print(f"Waga elementu {x}: {element_weight}")
+
     if element_weight > 10:
         total_weight -= element_weight
         container -= element_weight
         element_weight = 0
         print("BŁĄD PROGRAMU: Wprowadź ponownie wagę!")
         continue
+
     if element_weight == 0:
         break
+
     if container >= 20:
         packages += 1
         container = 0
+
     if container < 20 and counter == no_elements:
         packages += 1
+
     if element_weight > max_weight_element_weight:
         max_weight_element_weight = element_weight
         max_weight_element_num = counter
+
     if not element_weight:
         break
+
     counter += 1
+
 print(f"\nWysłano: {packages} paczek")
 print(f"Liczba kilogramów wysłanych: {total_weight} kg")
 print(f"Liczba pustych kg: {packages * 20 - total_weight}")
