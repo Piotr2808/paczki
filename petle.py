@@ -38,7 +38,7 @@ free_place = 0
 x = 0
 
 while counter <= no_elements:
-    element_weight = random.randint(1, 10)
+    element_weight = int(input("Podaj wagę elementu: ")) # or random.randint(1, 10)
     total_weight += element_weight
     container += element_weight
     for i in range(1, ):
@@ -52,7 +52,7 @@ while counter <= no_elements:
         print("BŁĄD PROGRAMU: Wprowadź ponownie wagę!")
         continue
 
-    if element_weight == 0:
+    if element_weight < 1 and element_weight >= 0:
         break
 
     if container >= 20:
@@ -73,6 +73,7 @@ while counter <= no_elements:
 
 print(f"\nWysłano: {packages} paczek")
 print(f"Liczba kilogramów wysłanych: {total_weight} kg")
+print(f"W paczce {packages} było najwięcej wolnych kg: {packages * 20 - total_weight}")
 print(f"Liczba pustych kg: {packages * 20 - total_weight}")
 print(f"Element: {max_weight_element_num} miał najwięcej kg: {max_weight_element_weight}")
 # print(f"Puste miejsce: {free_place} w pacze {free_place}")
