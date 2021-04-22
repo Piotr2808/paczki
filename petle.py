@@ -20,60 +20,50 @@
 
 import random
 
-# Zmienne:
-
-no_elements = int(input("Liczba elementów do wysłania: "))
-
-counter = 1
 total_weight = 0
-
 max_weight_element_weight = 0
 max_weight_element_num = 0
-
 packages = 0
 container = 0
-
-free_place = 0
-
-x = 0
+no_elements = 23
+counter = 1
 
 while counter <= no_elements:
-    element_weight = int(input(f"Podaj wagę elementu: ")) # or random.randint(1, 10)
+    element_weight = random.randint(1, 10) # or int(input(f"Podaj wagę elementu: "))
     total_weight += element_weight
     container += element_weight
-    for i in range(1, ):
-        x += 1
-    print(f"Waga elementu {x}: {element_weight}")
+    print(f"Waga elementu {counter}: {element_weight}")
+    counter += 1
 
     if element_weight > 10:
         total_weight -= element_weight
         container -= element_weight
         element_weight = 0
-        x -= 1
         print("\nBŁĄD PROGRAMU: Wprowadź ponownie wagę!")
         continue
-
-    if element_weight < 1 and element_weight >= 0:
+    if element_weight < 1 or not element_weight:
         break
 
-    if container >= 20:
+    elif container == 20:
         packages += 1
         container = 0
-
-    if container < 20 and counter == no_elements:
+    elif container > 20:
         packages += 1
-
-    if element_weight > max_weight_element_weight:
+        container = element_weight
+    elif container < 20 and counter == no_elements:
+        packages += 1
+    elif element_weight > max_weight_element_weight:
         max_weight_element_weight = element_weight
         max_weight_element_num = counter
+    print(total_weight)
+ #   if packages * 20 - total_weight > 20:
 
-    if not element_weight:
-        break
 
-    counter += 1
+
 
 print(f"\nWysłano: {packages} paczek")
 print(f"Liczba kilogramów wysłanych: {total_weight} kg")
 print(f"W paczce {packages} było najwięcej wolnych kg: {packages * 20 - total_weight}")
 print(f"Liczba pustych kg: {packages * 20 - total_weight}")
 print(f"Element: {max_weight_element_num} miał najwięcej kg: {max_weight_element_weight}")
+
